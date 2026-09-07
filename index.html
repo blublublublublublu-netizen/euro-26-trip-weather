@@ -1,364 +1,128 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>中歐行程天氣 · 2026年4月5–11日</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+  <title>中亞行程天氣 · 2026年10月</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background: #020617;
-      color: #e5e7eb;
-    }
-    h1, h2 {
-      text-align: center;
-      margin: 0.4rem 0;
-    }
-    h1 { font-size: 1.4rem; }
-    h2 { font-size: 1.05rem; color: #9ca3af; }
-    .subtitle {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #9ca3af;
-      margin-bottom: 1rem;
-    }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-    .card {
-      background: #020617;
-      border-radius: 0.9rem;
-      padding: 1rem 1.1rem 1.1rem;
-      border: 1px solid #1f2937;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
-    }
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.5rem;
-    }
-    .city {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .city-zh {
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-    .country {
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-    .status {
-      font-size: 0.85rem;
-      color: #f97316;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    th, td {
-      padding: 0.35rem 0.3rem;
-      text-align: left;
-      border-bottom: 1px solid #111827;
-      vertical-align: middle;
-    }
-    th {
-      font-weight: 500;
-      color: #9ca3af;
-      font-size: 0.78rem;
-    }
-    tr:last-child td {
-      border-bottom: none;
-    }
-    .date {
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
-    .temps {
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
-    .weather-icon {
-      font-size: 1.5rem;
-      line-height: 1;
-    }
-    .rain-tag {
-      display: inline-block;
-      padding: 0.08rem 0.35rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-    .rain-low {
-      background: rgba(22, 163, 74, 0.18);
-      color: #4ade80;
-    }
-    .rain-mid {
-      background: rgba(234, 179, 8, 0.2);
-      color: #facc15;
-    }
-    .rain-high {
-      background: rgba(239, 68, 68, 0.2);
-      color: #fca5a5;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 1.6rem;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-    .updated {
-      font-size: 0.8rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-      text-align: center;
-    }
-    .error {
-      color: #fca5a5;
-      font-size: 0.8rem;
-      margin-top: 0.35rem;
-    }
-    .spinner {
-      border: 2px solid rgba(148, 163, 184, 0.3);
-      border-top: 2px solid #e5e7eb;
-      border-radius: 50%;
-      width: 14px;
-      height: 14px;
-      animation: spin 0.8s linear infinite;
-      display: inline-block;
-      margin-right: 0.25rem;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    button.refresh {
-      display: block;
-      margin: 0 auto 0.75rem;
-      background: #1d4ed8;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
-    }
-    button.refresh:hover {
-      background: #2563eb;
-    }
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; margin: 0; padding: 16px; background: #020617; color: #e5e7eb; }
+    .container { max-width: 980px; margin: 0 auto; }
+    h1, h2 { text-align: center; margin: 7px 0; }
+    h1 { font-size: 1.45rem; }
+    h2 { font-size: 1rem; font-weight: 500; color: #9ca3af; }
+    .subtitle { text-align: center; color: #9ca3af; font-size: .9rem; margin: 12px 0 16px; }
+    .refresh { display: block; margin: 0 auto 9px; padding: 9px 20px; border: 0; border-radius: 999px; color: #fff; background: #1d4ed8; font-size: .95rem; cursor: pointer; box-shadow: 0 10px 24px rgba(37,99,235,.4); }
+    .updated { text-align: center; color: #6b7280; font-size: .78rem; min-height: 18px; margin: 0 0 15px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 14px; }
+    .card { background: #020617; border: 1px solid #1f2937; border-radius: 15px; padding: 15px 16px; box-shadow: 0 12px 28px rgba(0,0,0,.4); overflow-x: auto; }
+    .card-header { display: flex; align-items: start; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+    .city { font-size: 1.15rem; font-weight: 650; }
+    .city-zh { color: #9ca3af; font-size: .94rem; margin-top: 1px; }
+    .country { color: #6b7280; font-size: .8rem; margin-top: 2px; }
+    .status { color: #f59e0b; font-size: .84rem; white-space: nowrap; padding-top: 2px; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: 7px 4px; border-bottom: 1px solid #111827; vertical-align: middle; white-space: nowrap; }
+    th { color: #9ca3af; font-size: .78rem; font-weight: 500; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .weather-icon { font-size: 1.55rem; line-height: 1; }
+    .rain-tag { display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+    .rain-low { background: rgba(22,163,74,.18); color: #4ade80; }
+    .rain-mid { background: rgba(234,179,8,.20); color: #facc15; }
+    .rain-high { background: rgba(239,68,68,.20); color: #fca5a5; }
+    .error { color: #fca5a5; font-size: .82rem; margin-top: 8px; }
+    .footer { text-align: center; color: #64748b; font-size: .78rem; margin: 22px 0 6px; }
+    .spinner { border: 2px solid rgba(148,163,184,.3); border-top-color: #e5e7eb; border-radius: 50%; width: 13px; height: 13px; display: inline-block; vertical-align: -2px; margin-right: 3px; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>中歐行程天氣 Trip Weather</h1>
-    <h2>2026年4月5–11日 · Vienna / Český Krumlov / Prague / Bratislava / Budapest</h2>
-    <p class="subtitle">只顯示行程日期 · Open‑Meteo 天氣預報 · Reload 或按下方按鈕更新。</p>
-    <button class="refresh" onclick="loadAll()">更新天氣 Refresh</button>
-    <p class="updated" id="updated"></p>
-    <div class="cards" id="cards"></div>
-    <p class="footer">Data: Open‑Meteo Weather & Geocoding APIs · No API key · Personal trip use only.</p>
-  </div>
+  <main class="container">
+    <h1>中亞行程天氣 Trip Weather</h1>
+    <h2>烏茲別克 · 吉爾吉斯 · 哈薩克｜8–19/10/2026</h2>
+    <p class="subtitle">只顯示行程日期 · Open‑Meteo 天氣預報 · 按按鈕更新</p>
+    <button class="refresh" type="button" onclick="loadAll()">更新天氣 Refresh</button>
+    <p id="updated" class="updated"></p>
+    <section id="cards" class="cards"></section>
+    <p class="footer">Data: Open‑Meteo Weather & Geocoding APIs · Personal trip use only</p>
+  </main>
 
-  <script>
-    const locations = [
-      { label: 'Vienna', zh: '維也納', query: 'Vienna, Austria' },
-      { label: 'Český Krumlov', zh: '古姆洛夫', query: 'Cesky Krumlov, Czechia' },
-      { label: 'Prague', zh: '布拉格', query: 'Prague, Czechia' },
-      { label: 'Bratislava', zh: '布拉提斯娜', query: 'Bratislava, Slovakia' },
-      { label: 'Budapest', zh: '布達佩斯', query: 'Budapest, Hungary' }
-    ];
+<script>
+const locations = [
+  { key: 'Tashkent', label: 'Tashkent', zh: '塔什干', query: 'Tashkent, Uzbekistan' },
+  { key: 'Bukhara', label: 'Bukhara', zh: '布哈拉', query: 'Bukhara, Uzbekistan' },
+  { key: 'Samarkand', label: 'Samarkand', zh: '撒馬爾罕', query: 'Samarkand, Uzbekistan' },
+  { key: 'Bishkek', label: 'Bishkek', zh: '比什凱克', query: 'Bishkek, Kyrgyzstan' },
+  { key: 'Issyk-Kul', label: 'Issyk-Kul', zh: '伊塞克湖', query: 'Cholpon-Ata, Kyrgyzstan' },
+  { key: 'Almaty', label: 'Almaty', zh: '阿拉木圖', query: 'Almaty, Kazakhstan' },
+  { key: 'Charyn Canyon', label: 'Charyn Canyon', zh: '恰倫峽谷', query: 'Charyn Canyon, Kazakhstan' }
+];
 
-    const dateFilter = {
-      'Vienna': ['2026-04-05', '2026-04-06'],
-      'Český Krumlov': ['2026-04-06', '2026-04-07'],
-      'Prague': ['2026-04-07', '2026-04-08', '2026-04-09'],
-      'Bratislava': ['2026-04-09'],
-      'Budapest': ['2026-04-09', '2026-04-10']
-    };
+const dateFilter = {
+  'Tashkent': ['2026-10-08','2026-10-09','2026-10-10','2026-10-12'],
+  'Bukhara': ['2026-10-10'],
+  'Samarkand': ['2026-10-11','2026-10-12'],
+  'Bishkek': ['2026-10-13','2026-10-15','2026-10-16'],
+  'Issyk-Kul': ['2026-10-14','2026-10-15'],
+  'Almaty': ['2026-10-16','2026-10-17','2026-10-18'],
+  'Charyn Canyon': ['2026-10-17']
+};
 
-    const tripStart = '2026-04-05';
-    const tripEnd   = '2026-04-11';
+const tripStart = '2026-10-08';
+const tripEnd = '2026-10-18';
+const icons = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',56:'🌧️',57:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌧️',67:'🌧️',71:'❄️',73:'❄️',75:'❄️',77:'❄️',80:'🌦️',81:'🌧️',82:'🌧️',85:'❄️',86:'❄️',95:'⛈️',96:'⛈️',99:'⛈️'};
 
-    const weatherCodeMap = {
-      0:  { icon: '☀️' },
-      1:  { icon: '🌤️' },
-      2:  { icon: '⛅' },
-      3:  { icon: '☁️' },
-      45: { icon: '🌫️' },
-      48: { icon: '🌫️' },
-      51: { icon: '🌦️' },
-      53: { icon: '🌦️' },
-      55: { icon: '🌧️' },
-      56: { icon: '🌧️' },
-      57: { icon: '🌧️' },
-      61: { icon: '🌧️' },
-      63: { icon: '🌧️' },
-      65: { icon: '🌧️' },
-      66: { icon: '🌧️' },
-      67: { icon: '🌧️' },
-      71: { icon: '❄️' },
-      73: { icon: '❄️' },
-      75: { icon: '❄️' },
-      77: { icon: '❄️' },
-      80: { icon: '🌦️' },
-      81: { icon: '🌧️' },
-      82: { icon: '🌧️' },
-      85: { icon: '❄️' },
-      86: { icon: '❄️' },
-      95: { icon: '⛈️' },
-      96: { icon: '⛈️' },
-      99: { icon: '⛈️' }
-    };
-
-    function createCardSkeleton(location) {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.id = `card-${location.label.replace(/\s+/g, '-')}`;
-      card.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="city">${location.label}</div>
-            <div class="city-zh">${location.zh}</div>
-            <div class="country">${location.query}</div>
-          </div>
-          <div class="status"><span class="spinner"></span>Loading…</div>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>天氣</th>
-              <th>氣溫</th>
-              <th>體感</th>
-              <th>雨</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="error"></div>
-      `;
-      return card;
+function cardTemplate(loc) {
+  return `<article class="card" id="card-${loc.key}">
+    <div class="card-header"><div><div class="city">${loc.label}</div><div class="city-zh">${loc.zh}</div><div class="country">${loc.query}</div></div><div class="status"><span class="spinner"></span>Loading…</div></div>
+    <table><thead><tr><th></th><th>天氣</th><th>氣溫</th><th>體感</th><th>雨</th></tr></thead><tbody></tbody></table><div class="error"></div>
+  </article>`;
+}
+function shortDate(date) { const [,m,d] = date.split('-'); return `${Number(d)}/${Number(m)}`; }
+function rainTag(value) {
+  if (value === null || value === undefined) return '<span class="rain-tag rain-low">–</span>';
+  if (value <= 30) return '<span class="rain-tag rain-low">Low</span>';
+  if (value <= 60) return '<span class="rain-tag rain-mid">Mid</span>';
+  return '<span class="rain-tag rain-high">High</span>';
+}
+async function geocode(query) {
+  const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
+  url.searchParams.set('name', query); url.searchParams.set('count', '1'); url.searchParams.set('language', 'en'); url.searchParams.set('format', 'json');
+  const r = await fetch(url); if (!r.ok) throw new Error('Location lookup failed');
+  const json = await r.json(); if (!json.results?.length) throw new Error('Location not found'); return json.results[0];
+}
+async function forecast(latitude, longitude) {
+  const url = new URL('https://api.open-meteo.com/v1/forecast');
+  url.searchParams.set('latitude', latitude); url.searchParams.set('longitude', longitude);
+  url.searchParams.set('daily', 'weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max');
+  url.searchParams.set('timezone', 'auto'); url.searchParams.set('start_date', tripStart); url.searchParams.set('end_date', tripEnd);
+  const r = await fetch(url); if (!r.ok) throw new Error('Forecast request failed'); return r.json();
+}
+async function loadOne(loc) {
+  const card = document.getElementById(`card-${loc.key}`), status = card.querySelector('.status'), tbody = card.querySelector('tbody'), error = card.querySelector('.error');
+  status.innerHTML = '<span class="spinner"></span>Loading…'; tbody.innerHTML = ''; error.textContent = '';
+  try {
+    const point = await geocode(loc.query); const data = await forecast(point.latitude, point.longitude); const d = data.daily;
+    const needed = dateFilter[loc.key];
+    for (let i = 0; i < d.time.length; i++) {
+      if (!needed.includes(d.time[i])) continue;
+      const temp = `${Math.round(d.temperature_2m_min[i])}–${Math.round(d.temperature_2m_max[i])}°C`;
+      const feel = `${Math.round(d.apparent_temperature_min[i])}–${Math.round(d.apparent_temperature_max[i])}°C`;
+      tbody.insertAdjacentHTML('beforeend', `<tr><td>${shortDate(d.time[i])}</td><td><span class="weather-icon">${icons[d.weathercode[i]] || '🌡️'}</span></td><td>${temp}</td><td>${feel}</td><td>${rainTag(d.precipitation_probability_max?.[i])}</td></tr>`);
     }
-
-    function formatDateShort(isoDate) {
-      // "2026-04-05" -> "5/4"
-      const [y, m, d] = isoDate.split('-');
-      return `${parseInt(d, 10)}/${parseInt(m, 10)}`;
-    }
-
-    function rainLevelTag(rain) {
-      if (rain == null) return '<span class="rain-tag rain-low">–</span>';
-      const val = Number(rain);
-      if (val <= 30) return '<span class="rain-tag rain-low">Low</span>';
-      if (val <= 60) return '<span class="rain-tag rain-mid">Mid</span>';
-      return '<span class="rain-tag rain-high">High</span>';
-    }
-
-    async function geocode(query) {
-      const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
-      url.searchParams.set('name', query);
-      url.searchParams.set('count', '1');
-      url.searchParams.set('language', 'en');
-      url.searchParams.set('format', 'json');
-      const res = await fetch(url.toString());
-      if (!res.ok) throw new Error('Geocoding error');
-      const data = await res.json();
-      if (!data.results || !data.results.length) throw new Error('Location not found');
-      return data.results[0];
-    }
-
-    async function fetchForecast(lat, lon) {
-      const url = new URL('https://api.open-meteo.com/v1/forecast');
-      url.searchParams.set('latitude', lat);
-      url.searchParams.set('longitude', lon);
-      url.searchParams.set('daily', 'weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max');
-      url.searchParams.set('timezone', 'auto');
-      url.searchParams.set('start_date', tripStart);
-      url.searchParams.set('end_date', tripEnd);
-      const res = await fetch(url.toString());
-      if (!res.ok) throw new Error('Forecast error');
-      return res.json();
-    }
-
-    async function loadLocation(location) {
-      const cardId = `card-${location.label.replace(/\s+/g, '-')}`;
-      const card = document.getElementById(cardId);
-      const status = card.querySelector('.status');
-      const tbody = card.querySelector('tbody');
-      const errorDiv = card.querySelector('.error');
-      status.innerHTML = '<span class="spinner"></span>Loading…';
-      errorDiv.textContent = '';
-      tbody.innerHTML = '';
-
-      try {
-        const geo = await geocode(location.query);
-        const forecast = await fetchForecast(geo.latitude, geo.longitude);
-        const d = forecast.daily;
-        if (!d || !d.time || !d.time.length) {
-          status.textContent = 'No data';
-          return;
-        }
-        status.textContent = 'Updated';
-        const wantedDates = dateFilter[location.label] || [];
-        for (let i = 0; i < d.time.length; i++) {
-          const date = d.time[i];
-          if (!wantedDates.includes(date)) continue;
-          const code = d.weathercode[i];
-          const tMin = d.temperature_2m_min[i];
-          const tMax = d.temperature_2m_max[i];
-          const aMin = d.apparent_temperature_min ? d.apparent_temperature_min[i] : null;
-          const aMax = d.apparent_temperature_max ? d.apparent_temperature_max[i] : null;
-          const rain = d.precipitation_probability_max ? d.precipitation_probability_max[i] : null;
-          const info = weatherCodeMap[code] || { icon: '' };
-          const tr = document.createElement('tr');
-          const temps = `${Math.round(tMin)}–${Math.round(tMax)}°C`;
-          const feels = (aMin != null && aMax != null)
-            ? `${Math.round(aMin)}–${Math.round(aMax)}°C`
-            : '–';
-          tr.innerHTML = `
-            <td class="date">${formatDateShort(date)}</td>
-            <td><span class="weather-icon">${info.icon}</span></td>
-            <td class="temps">${temps}</td>
-            <td class="temps">${feels}</td>
-            <td>${rainLevelTag(rain)}</td>
-          `;
-          tbody.appendChild(tr);
-        }
-        if (!tbody.hasChildNodes()) {
-          const tr = document.createElement('tr');
-          tr.innerHTML = '<td colspan="5" class="temps">此城市沒有選擇的日期 · No selected dates.</td>';
-          tbody.appendChild(tr);
-        }
-      } catch (err) {
-        console.error(err);
-        status.textContent = 'Error';
-        errorDiv.textContent = 'Could not load forecast. Try again later.';
-      }
-    }
-
-    async function loadAll() {
-      const cardsContainer = document.getElementById('cards');
-      if (!cardsContainer.hasChildNodes()) {
-        locations.forEach(loc => cardsContainer.appendChild(createCardSkeleton(loc)));
-      }
-      locations.forEach(loc => loadLocation(loc));
-      const updated = document.getElementById('updated');
-      updated.textContent = '最後更新 Last refreshed: ' + new Date().toLocaleString();
-    }
-
-    window.addEventListener('DOMContentLoaded', loadAll);
-  </script>
+    status.textContent = 'Updated';
+  } catch (e) { console.error(e); status.textContent = 'Error'; error.textContent = 'Could not load forecast. Try again later.'; }
+}
+function loadAll() {
+  const cards = document.getElementById('cards');
+  if (!cards.children.length) cards.innerHTML = locations.map(cardTemplate).join('');
+  locations.forEach(loadOne);
+  document.getElementById('updated').textContent = '最後更新 Last refreshed: ' + new Date().toLocaleString();
+}
+document.addEventListener('DOMContentLoaded', loadAll);
+</script>
 </body>
 </html>
